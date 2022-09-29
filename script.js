@@ -6,7 +6,7 @@ var alphabet = {
 var symbol = " !@$#%^+&*()[]{}~/\\";
 var pwDNA = [];
 var pwAry = [];
-
+var aux = 0;
 
 
 
@@ -55,25 +55,27 @@ function generatePassword() {
     upperCase: confirm("Do you want Upper Case Letters in your pw?"),
     lowerCase: confirm("What about them Lower Case Letters?"),
     specialChar: confirm("Last but not least, special character, yes/no?"),
-    "0": ["0", function genN() {
-      var randomN = Math.floor(Math.random() * 10)
-      console.log(randomN);
-    }],
-    "1": ["1", function genU() {
-      var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
-      randomU = alphabet.uppercase[randomU];
-      console.log(randomU);
-    }],
-    "2": ["2", function genL() {
-      var randomL = Math.floor(Math.random() * alphabet.lowercase.length);
-      randomL = alphabet.lowercase[randomL];
-      console.log(randomL);
-    }],
-    "3": ["3", function genS() {
-      var randomS = Math.floor(Math.random() * symbol.length);
-      randomS = symbol[randomS];
-      console.log(randomS);
-    }],
+  };
+  // var randomN = function genN() {
+  function genN() {
+    var randomN = (Math.floor(Math.random() * 10));
+    aux = randomN;
+    console.log(randomN);
+  };
+  function genU() {
+    var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
+    randomU = alphabet.uppercase[randomU];
+    aux = randomU;
+  };
+  function genL() {
+    var randomL = Math.floor(Math.random() * alphabet.lowercase.length);
+    randomL = alphabet.lowercase[randomL];
+    aux = randomL;
+  };
+  function genS() {
+    var randomS = Math.floor(Math.random() * symbol.length);
+    randomS = symbol[randomS];
+    console.log(randomS);
   };
   var pwValid = false;
 
@@ -99,41 +101,84 @@ function generatePassword() {
   //"1" = upperCase
   //"2" = lowerCase
   //"3" = sepcialChar
+  genDNA();
+
+  //
   function genDNA() {
-    for (var i = 0; i < pwLaw.pwLength; i++) {
+    for (var i = 0; i < 1; i++) {
       aux = 0;
       if (pwLaw.pwNum) {
-        pwDNA.push(aux);
-        console.log("genN");
+        // pwDNA.push(aux) = pwLaw[0];
+        pwDNA[aux] = 0;
+        // console.log("genN");
         aux++;
+        // i++;
       };
       if (pwLaw.upperCase) {
-        pwDNA.push(aux);
-        console.log("genU");
+        pwDNA[aux] = 1;
+        // console.log("genU");
         aux++;
+        // i++;
       };
       if (pwLaw.lowerCase) {
-        pwDNA.push(aux);
-        console.log("genL");
+        pwDNA[aux] = 2;
+        // console.log("genL");
         aux++;
+        // i++;
       };
       if (pwLaw.specialChar) {
-        pwDNA.push(aux);
-        console.log("genS");
+        pwDNA[aux] = 3;
+        // console.log("genS");
         aux++;
+        // i++;
+      };
+      // if (pwDNA.length = (pwLaw.pwLength + 1)) {
+      // };
+      console.log(pwDNA);
+    };
+    // };
+    // Test();
+    // console.log(pwLaw.0);
+
+    // function Test() {
+    Test();
+    function Test() {
+      for (var i = 0; i < pwLaw.pwLength; i++) {
+        aux = 0
+        var rand = pwDNA[Math.floor(Math.random() * pwDNA.length)];
+
+        console.log(rand + "test");
+        //   genN() = pwAry[i];
+        //   console.log(pwAry[i]);
+        switch (rand) {
+          case 0:
+            genN();
+            pwAry[i] = aux;
+            break;
+          case 1:
+            genU();
+            pwAry[i] = aux;
+            break;
+          case 2:
+            genL();
+            pwAry[i] = aux;
+            break;
+          case 3:
+            genS();
+            pwAry[i] = aux;
+            break;
+        };
+
+
+        // console.log(pwLaw.pwLength);
       };
 
+      // console.log(aux);
     };
+
   };
-  genDNA();
-  console.log(pwDNA);
-  console.log(pwLaw.pwLength);
-
-
-  // console.log(aux);
 
 };
-
 
 
   //testing OMG it works
