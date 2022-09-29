@@ -37,7 +37,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  generatePassword();
+  var password = pwAry.join();
+  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -56,11 +58,10 @@ function generatePassword() {
     lowerCase: confirm("What about them Lower Case Letters?"),
     specialChar: confirm("Last but not least, special character, yes/no?"),
   };
-  // var randomN = function genN() {
+  // function to generate random characters
   function genN() {
     var randomN = (Math.floor(Math.random() * 10));
     aux = randomN;
-    console.log(randomN);
   };
   function genU() {
     var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
@@ -95,15 +96,20 @@ function generatePassword() {
   else {
     pwValid = true;
   };
-  //ok idea: like DNA - get a basic formular of what type of character makes the password 
+
+  //original idea:
+  // like DNA - get a basic formular of what type of character makes the password 
   //so need to generate an array with pwLength, with:
   //"0" = num
   //"1" = upperCase
   //"2" = lowerCase
   //"3" = sepcialChar
-  genDNA();
 
-  //
+  //new idea:
+  //get a list of value par like I did, but just want to run it once to determine if 
+  //certain criteria is turned "On"
+  //modifying "aux" as a global variable to store the value that we want in array
+  genDNA();
   function genDNA() {
     for (var i = 0; i < 1; i++) {
       aux = 0;
@@ -140,14 +146,15 @@ function generatePassword() {
     // Test();
     // console.log(pwLaw.0);
 
-    // function Test() {
+    // identify and call function:
+    // for the password length, use the rules that we have for pwDNA
+    // 
     Test();
     function Test() {
       for (var i = 0; i < pwLaw.pwLength; i++) {
         aux = 0
         var rand = pwDNA[Math.floor(Math.random() * pwDNA.length)];
-
-        console.log(rand + "test");
+        console.log(rand);
         //   genN() = pwAry[i];
         //   console.log(pwAry[i]);
         switch (rand) {
@@ -168,7 +175,6 @@ function generatePassword() {
             pwAry[i] = aux;
             break;
         };
-
 
         // console.log(pwLaw.pwLength);
       };
