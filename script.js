@@ -85,7 +85,7 @@ function generatePassword() {
     pwValid = false;
     alert("invalid. plz try again with at least 8 characters or less than 25")
     console.log(pwLaw.pwLength);
-    pwAry = ["invalid"];
+    pwAry = ["ATTN!! : 8 < PW > 25chr"];
     pwDNA = ["invalid"];
     return pwAry;
   }
@@ -95,8 +95,8 @@ function generatePassword() {
     pwValid = false;
     alert(`lol enjoy your 'password' with ${pwLaw.pwLength} empty spaces`)
     console.log("invalid " + pwValid);
-    pwAry = ["invalid"];
-    pwDNA = ["invalid"];
+    pwAry = ["(empty spaces)"];
+    pwDNA = ["emptu spaces"];
     return pwAry;
   }
   else {
@@ -114,7 +114,7 @@ function generatePassword() {
   //new idea:
   //get a list of value par like I did, but just want to run it once to determine if 
   //certain criteria is turned "On"
-  //modifying "aux" as a global variable to store the value that we want in array
+  //modifying "aux" as a global variable to store the rule that we want in array
   genDNA();
   function genDNA() {
     pwDNA = [];
