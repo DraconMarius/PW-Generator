@@ -37,9 +37,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  generatePassword();
-  console.log(pwAry);
-  var password = pwAry.join("");
+  var password = generatePassword();
   console.log(password);
   var passwordText = document.querySelector("#password");
 
@@ -84,20 +82,22 @@ function generatePassword() {
 
   // Error messages and validation if `no` to any type of char
   if ((pwLaw.pwLength < 8) || (pwLaw.pwLength > 25)) {
+    pwValid = false;
     alert("invalid. plz try again with at least 8 characters or less than 25")
     console.log(pwLaw.pwLength);
     pwAry = ["invalid"];
     pwDNA = ["invalid"];
+    return pwAry;
   }
 
-  if ((pwLaw.pwNum == false) && (pwLaw.upperCase == false) &&
+  else if ((pwLaw.pwNum == false) && (pwLaw.upperCase == false) &&
     (pwLaw.lowerCase == false) && (pwLaw.specialChar == false)) {
     pwValid = false;
     alert(`lol enjoy your 'password' with ${pwLaw.pwLength} empty spaces`)
     console.log("invalid " + pwValid);
     pwAry = ["invalid"];
     pwDNA = ["invalid"];
-    return;
+    return pwAry;
   }
   else {
     pwValid = true;
@@ -118,36 +118,38 @@ function generatePassword() {
   genDNA();
   function genDNA() {
     pwDNA = [];
-    for (var i = 0; i < 1; i++) {
-      aux = 0;
-      if (pwLaw.pwNum) {
-        // pwDNA.push(aux) = pwLaw[0];
-        pwDNA[aux] = 0;
-        // console.log("genN");
-        aux++;
-        // i++;
+    if (pwValid) {
+      for (var i = 0; i < 1; i++) {
+        aux = 0;
+        if (pwLaw.pwNum) {
+          // pwDNA.push(aux) = pwLaw[0];
+          pwDNA[aux] = 0;
+          // console.log("genN");
+          aux++;
+          // i++;
+        };
+        if (pwLaw.upperCase) {
+          pwDNA[aux] = 1;
+          // console.log("genU");
+          aux++;
+          // i++;
+        };
+        if (pwLaw.lowerCase) {
+          pwDNA[aux] = 2;
+          // console.log("genL");
+          aux++;
+          // i++;
+        };
+        if (pwLaw.specialChar) {
+          pwDNA[aux] = 3;
+          // console.log("genS");
+          aux++;
+          // i++;
+        };
+        // if (pwDNA.length = (pwLaw.pwLength + 1)) {
+        // };
+        console.log(pwDNA);
       };
-      if (pwLaw.upperCase) {
-        pwDNA[aux] = 1;
-        // console.log("genU");
-        aux++;
-        // i++;
-      };
-      if (pwLaw.lowerCase) {
-        pwDNA[aux] = 2;
-        // console.log("genL");
-        aux++;
-        // i++;
-      };
-      if (pwLaw.specialChar) {
-        pwDNA[aux] = 3;
-        // console.log("genS");
-        aux++;
-        // i++;
-      };
-      // if (pwDNA.length = (pwLaw.pwLength + 1)) {
-      // };
-      console.log(pwDNA);
     };
     // };
     // Test();
@@ -159,38 +161,43 @@ function generatePassword() {
     Test();
     function Test() {
       pwAry = [];
-      for (var i = 0; i < pwLaw.pwLength; i++) {
-        aux = 0;
-        var rand = pwDNA[Math.floor(Math.random() * pwDNA.length)];
-        // console.log(rand);
-        //   genN() = pwAry[i];
-        //   console.log(pwAry[i]);
-        switch (rand) {
-          case 0:
-            genN();
-            pwAry[i] = aux;
-            break;
-          case 1:
-            genU();
-            pwAry[i] = aux;
-            break;
-          case 2:
-            genL();
-            pwAry[i] = aux;
-            break;
-          case 3:
-            genS();
-            pwAry[i] = aux;
-            break;
+      if (pwValid) {
+        for (var i = 0; i < pwLaw.pwLength; i++) {
+          aux = 0;
+          var rand = pwDNA[Math.floor(Math.random() * pwDNA.length)];
+          // console.log(rand);
+          //   genN() = pwAry[i];
+          //   console.log(pwAry[i]);
+          switch (rand) {
+            case 0:
+              genN();
+              pwAry[i] = aux;
+              break;
+            case 1:
+              genU();
+              pwAry[i] = aux;
+              break;
+            case 2:
+              genL();
+              pwAry[i] = aux;
+              break;
+            case 3:
+              genS();
+              pwAry[i] = aux;
+              break;
+          };
+
+          // console.log(pwLaw.pwLength);
         };
-
-        // console.log(pwLaw.pwLength);
       };
-
       // console.log(aux);
     };
 
   };
+  console.log(pwAry);
+  pwAry = pwAry.join("");
+  console.log(pwAry);
+  return pwAry;
 
 };
 
