@@ -86,7 +86,8 @@ function generatePassword() {
   if ((pwLaw.pwLength < 8) || (pwLaw.pwLength > 25)) {
     alert("invalid. plz try again with at least 8 characters or less than 25")
     console.log(pwLaw.pwLength);
-    console.log(pwLaw);
+    pwAry = ["invalid"];
+    pwDNA = ["invalid"];
   }
 
   if ((pwLaw.pwNum == false) && (pwLaw.upperCase == false) &&
@@ -94,6 +95,9 @@ function generatePassword() {
     pwValid = false;
     alert(`lol enjoy your 'password' with ${pwLaw.pwLength} empty spaces`)
     console.log("invalid " + pwValid);
+    pwAry = ["invalid"];
+    pwDNA = ["invalid"];
+    return;
   }
   else {
     pwValid = true;
