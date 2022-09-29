@@ -55,10 +55,25 @@ function generatePassword() {
     upperCase: confirm("Do you want Upper Case Letters in your pw?"),
     lowerCase: confirm("What about them Lower Case Letters?"),
     specialChar: confirm("Last but not least, special character, yes/no?"),
-    "0": ["0", genN()],
-    "1": ["1", genU()],
-    "2": ["2", genL()],
-    "3": ["3", genS()],
+    "0": ["0", function genN() {
+      var randomN = Math.floor(Math.random() * 10)
+      console.log(randomN);
+    }],
+    "1": ["1", function genU() {
+      var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
+      randomU = alphabet.uppercase[randomU];
+      console.log(randomU);
+    }],
+    "2": ["2", function genL() {
+      var randomL = Math.floor(Math.random() * alphabet.lowercase.length);
+      randomL = alphabet.lowercase[randomL];
+      console.log(randomL);
+    }],
+    "3": ["3", function genS() {
+      var randomS = Math.floor(Math.random() * symbol.length);
+      randomS = symbol[randomS];
+      console.log(randomS);
+    }],
   };
   var pwValid = false;
   var pwN
@@ -83,77 +98,79 @@ function generatePassword() {
 
   //PW generation fn so we can call on them
   function genRand() {
-    function genN() {
-      var randomN = Math.floor(Math.random() * 10);
-      aux = randomN
-      console.log(aux);
-      console.log("testN: " + aux);
-    }
 
-    function genU() {
-      var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
-      aux = randomU
-      console.log(aux);
-      console.log("testU: " + alphabet.uppercase[aux]);
-    }
+  }
+  //testing OMG it works
+  // genN();
+  // genU();
+  // genL();
+  // genS();
 
-    function genL() {
-      var randomL = Math.floor(Math.random() * alphabet.lowercase.length);
-      aux = randomL
-      console.log(aux);
-      console.log("testL: " + alphabet.lowercase[aux]);
-    }
-
-    function genS() {
-      var randomS = Math.floor(Math.random() * symbol.length);
-      aux = randomS
-      console.log(aux);
-      console.log("testS: " + symbol[aux]);
-    }
-    //testing OMG it works
-    // genN();
-    // genU();
-    // genL();
-    // genS();
-
-    //ok idea: like DNA - get a basic formular of what type of character makes the password 
-    //so need to generate an array with pwLength, with:
-    //"0" = num
-    //"1" = upperCase
-    //"2" = lowerCase
-    //"3" = sepcialChar
-    function generate() {
-      for (var i = 0; i < pwLaw.pwLength; i++) {
-        aux = 0;
-        if (pwLaw.pwNum) {
-          pwDNA.push[aux];
-          console.log(pwDNA);
-          aux++
-        }
-        else if (pwLaw.upperCase) {
-          pwDNA.push[aux];
-          console.log(pwDNA);
-          aux++
-        }
-        else if (pwLaw.lowerCase) {
-          pwDNA.push[aux];
-          console.log(pwDNA);
-          aux++
-        }
-        else if (pwLaw.specialChar) {
-          pwDNA.push[aux];
-          console.log(pwDNA);
-          aux++
-        }
-        return pwDNA;
-      };
-
+  //ok idea: like DNA - get a basic formular of what type of character makes the password 
+  //so need to generate an array with pwLength, with:
+  //"0" = num
+  //"1" = upperCase
+  //"2" = lowerCase
+  //"3" = sepcialChar
+  function generate() {
+    for (var i = 0; i < pwLaw.pwLength; i++) {
+      aux = 0;
+      if (pwLaw.pwNum) {
+        pwDNA.push[aux];
+        console.log(pwDNA);
+        aux++
+      }
+      else if (pwLaw.upperCase) {
+        pwDNA.push[aux];
+        console.log(pwDNA);
+        aux++
+      }
+      else if (pwLaw.lowerCase) {
+        pwDNA.push[aux];
+        console.log(pwDNA);
+        aux++
+      }
+      else if (pwLaw.specialChar) {
+        pwDNA.push[aux];
+        console.log(pwDNA);
+        aux++
+      }
+      return pwDNA;
     };
-    generate(pwLaw.pwLength);
-    console.log(pwDNA);
-    // console.log(aux);
 
   };
+  generate(pwLaw.pwLength);
+  console.log(pwDNA);
+  // console.log(aux);
+
+};
 
 
-}
+
+
+    // function genN() {
+    //   var randomN = Math.floor(Math.random() * 10);
+    //   aux = randomN
+    //   console.log(aux);
+    //   console.log("testN: " + aux);
+    // }
+
+    // function genU() {
+    //   var randomU = Math.floor(Math.random() * alphabet.uppercase.length);
+    //   aux = randomU
+    //   console.log(aux);
+    //   console.log("testU: " + alphabet.uppercase[aux]);
+    // }
+
+    // function genL() {
+    //   var randomL = Math.floor(Math.random() * alphabet.lowercase.length);
+    //   aux = randomL
+    //   console.log(aux);
+    //   console.log("testL: " + alphabet.lowercase[aux]);
+    // }
+
+    // function genS() {
+    //   var randomS = Math.floor(Math.random() * symbol.length);
+    //   aux = randomS
+    //   console.log(aux);
+    //   console.log("testS: " + symbol[aux]);
