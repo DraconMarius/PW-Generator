@@ -38,7 +38,8 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   generatePassword();
-  var password = pwAry.join();
+  console.log(pwAry);
+  var password = pwAry.join("");
   console.log(password);
   var passwordText = document.querySelector("#password");
 
@@ -51,6 +52,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // To store prompt answers for criteria
 function generatePassword() {
+  passwordText = "processing"
   var pwLaw = {
     pwLength: prompt("How many characters are you looking for?"),
     pwNum: confirm("Do you want numbers in your pw?"),
@@ -76,7 +78,7 @@ function generatePassword() {
   function genS() {
     var randomS = Math.floor(Math.random() * symbol.length);
     randomS = symbol[randomS];
-    console.log(randomS);
+    aux = randomS;
   };
   var pwValid = false;
 
@@ -113,6 +115,7 @@ function generatePassword() {
   function genDNA() {
     for (var i = 0; i < 1; i++) {
       aux = 0;
+      pwDNA = [];
       if (pwLaw.pwNum) {
         // pwDNA.push(aux) = pwLaw[0];
         pwDNA[aux] = 0;
@@ -151,10 +154,11 @@ function generatePassword() {
     // 
     Test();
     function Test() {
+      pwAry = [];
       for (var i = 0; i < pwLaw.pwLength; i++) {
-        aux = 0
+        aux = 0;
         var rand = pwDNA[Math.floor(Math.random() * pwDNA.length)];
-        console.log(rand);
+        // console.log(rand);
         //   genN() = pwAry[i];
         //   console.log(pwAry[i]);
         switch (rand) {
