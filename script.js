@@ -113,9 +113,9 @@ function generatePassword() {
   //modifying "aux" as a global variable to store the value that we want in array
   genDNA();
   function genDNA() {
+    pwDNA = [];
     for (var i = 0; i < 1; i++) {
       aux = 0;
-      pwDNA = [];
       if (pwLaw.pwNum) {
         // pwDNA.push(aux) = pwLaw[0];
         pwDNA[aux] = 0;
