@@ -76,8 +76,6 @@ function generatePassword() {
     }],
   };
   var pwValid = false;
-  var pwN
-  console.log(pwLaw.pwLength);
 
   // Error messages and validation if `no` to any type of char
   if ((pwLaw.pwLength < 8) || (pwLaw.pwLength > 25)) {
@@ -95,59 +93,54 @@ function generatePassword() {
   else {
     pwValid = true;
   };
-
-  //PW generation fn so we can call on them
-  function genRand() {
-
-  }
-  //testing OMG it works
-  // genN();
-  // genU();
-  // genL();
-  // genS();
-
   //ok idea: like DNA - get a basic formular of what type of character makes the password 
   //so need to generate an array with pwLength, with:
   //"0" = num
   //"1" = upperCase
   //"2" = lowerCase
   //"3" = sepcialChar
-  function generate() {
+  function genDNA() {
     for (var i = 0; i < pwLaw.pwLength; i++) {
       aux = 0;
       if (pwLaw.pwNum) {
-        pwDNA.push[aux];
-        console.log(pwDNA);
-        aux++
-      }
-      else if (pwLaw.upperCase) {
-        pwDNA.push[aux];
-        console.log(pwDNA);
-        aux++
-      }
-      else if (pwLaw.lowerCase) {
-        pwDNA.push[aux];
-        console.log(pwDNA);
-        aux++
-      }
-      else if (pwLaw.specialChar) {
-        pwDNA.push[aux];
-        console.log(pwDNA);
-        aux++
-      }
-      return pwDNA;
-    };
+        pwDNA.push(aux);
+        console.log("genN");
+        aux++;
+      };
+      if (pwLaw.upperCase) {
+        pwDNA.push(aux);
+        console.log("genU");
+        aux++;
+      };
+      if (pwLaw.lowerCase) {
+        pwDNA.push(aux);
+        console.log("genL");
+        aux++;
+      };
+      if (pwLaw.specialChar) {
+        pwDNA.push(aux);
+        console.log("genS");
+        aux++;
+      };
 
+    };
   };
-  generate(pwLaw.pwLength);
+  genDNA();
   console.log(pwDNA);
+  console.log(pwLaw.pwLength);
+
+
   // console.log(aux);
 
 };
 
 
 
-
+  //testing OMG it works
+  // genN();
+  // genU();
+  // genL();
+  // genS();
     // function genN() {
     //   var randomN = Math.floor(Math.random() * 10);
     //   aux = randomN
