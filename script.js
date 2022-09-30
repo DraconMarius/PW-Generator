@@ -81,12 +81,19 @@ function generatePassword() {
   var pwValid = false;
 
   // Error messages and validation if `no` to any type of char
-  if ((pwLaw.pwLength < 8) || (pwLaw.pwLength > 25)) {
+
+  if (isNaN(pwLaw.pwLength)) {
     pwValid = false;
-    alert("invalid. plz try again with at least 8 characters or less than 25")
+    alert("plz try a number");
+    pwAry = ["ATTN!! PW length needs to be a number"];
+    return pwAry;
+  }
+
+  if ((pwLaw.pwLength < 8) || (pwLaw.pwLength > 125)) {
+    pwValid = false;
+    alert("invalid. plz try again with at least 8 characters or less than 126")
     console.log(pwLaw.pwLength);
-    pwAry = ["ATTN!! : 8 < PW > 25chr"];
-    pwDNA = ["invalid"];
+    pwAry = ["ATTN!! : 8 < PW > 125chr"];
     return pwAry;
   }
 
@@ -95,8 +102,7 @@ function generatePassword() {
     pwValid = false;
     alert(`lol enjoy your 'password' with ${pwLaw.pwLength} empty spaces`)
     console.log("invalid " + pwValid);
-    pwAry = ["(empty spaces)"];
-    pwDNA = ["emptu spaces"];
+    pwAry = ["(empty spaces, please try again and choose)"];
     return pwAry;
   }
   else {
@@ -114,7 +120,7 @@ function generatePassword() {
   //new idea:
   //get a list of value par like I did, but just want to run it once to determine if 
   //certain criteria is turned "On"
-  //modifying "aux" as a global variable to store the rule that we want in array
+  //modifying "aux" as a global variable t∂ store the rule that we want in array
   genDNA();
   function genDNA() {
     pwDNA = [];
@@ -194,6 +200,8 @@ function generatePassword() {
     };
 
   };
+  console.log(pwLaw.pwLength);
+  console.log(isNaN(pwLaw.pwLength));
   console.log(pwAry);
   pwAry = pwAry.join("");
   console.log(pwAry);
