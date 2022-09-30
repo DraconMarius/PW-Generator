@@ -28,12 +28,9 @@ Where I would first generate a string of random  `0` - `3`s based on rules and t
 I eventually got really stuck on the loop to generate the “DNA” and ended up pivoting to another approach, to just run the iteration once, and store the value of whether if a certain criteria is true or false, and then using that to help us determind which character should be present in the password and add it to the array. 
 
 ---
-## Demo
-
-
-## Links / Media
+## Demo Links / Media
 *(feel free to click on the gif to go to deployed site)*
-[<img src="Demo.gif" alt='sample'>](https://draconmarius.github.io/PW-Generator/) 
+[<img src="demo.gif" alt='sample'>](https://draconmarius.github.io/PW-Generator/) 
 
 ## Technologies Used
 > JavaScript
